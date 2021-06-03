@@ -4,15 +4,14 @@
 function insertionSort(array) {
   for (let i = 1; i < array.length; i++) {
     const key = array[i];
-    let insertIndex = i - 1;
+    let j;
 
-    for (let j = i - 1; j >= 0; j--) {
+    for (j = i - 1; j >= 0; j--) {
       if (key > array[j]) break;
       array[j + 1] = array[j];
-      insertIndex -= 1;
     }
 
-    array[insertIndex + 1] = key;
+    array[j + 1] = key;
   }
   return array;
 }
