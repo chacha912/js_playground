@@ -4,8 +4,8 @@
 // 단, 어떠한 빌트인 함수도 사용하지 않고 for 문을 사용하여 구현하여야 한다.
 
 function isSorted(array) {
-  for (let i = 1; i < array.length; i++) {
-    if (array[i - 1] > array[i]) return false;
+  for (let i = 0; i < array.length - 1; i++) {
+    if (array[i] > array[i + 1]) return false;
   }
   return true;
 }
