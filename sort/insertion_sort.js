@@ -2,19 +2,18 @@
 // 단, 어떠한 빌트인 함수도 사용하지 않고 for 문을 사용하여 구현하여야 한다.
 
 function insertionSort(array) {
-  const swap = (array, index1, index2) => {
-    const temp = array[index1];
-    array[index1] = array[index2];
-    array[index2] = temp;
-  };
-
   for (let i = 1; i < array.length; i++) {
-    for (let j = i; j > 0; j--) {
-      if (array[j] >= array[j - 1]) break;
-      swap(array, j, j - 1);
-    }
-  }
+    const key = array[i];
+    let insertIndex = i - 1;
 
+    for (let j = i - 1; j >= 0; j--) {
+      if (key > array[j]) break;
+      array[j + 1] = array[j];
+      insertIndex -= 1;
+    }
+
+    array[insertIndex + 1] = key;
+  }
   return array;
 }
 
