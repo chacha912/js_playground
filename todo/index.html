@@ -35,6 +35,10 @@
         $todos.removeChild($target);
       };
 
+      const toggleTodo = (checked, $content) => {
+        $content.style.textDecoration = checked ? 'line-through' : 'none';
+      };
+
       // event handlers
       document.querySelector('form').onsubmit = e => {
         e.preventDefault();
@@ -51,6 +55,12 @@
         if (!e.target.matches('.todos > li > .remove')) return;
 
         removeTodo(e.target.parentNode);
+      };
+
+      $todos.onchange = e => {
+        //   todos 안에서 onchange 이벤트를 발생시키는 것이 input checkbox 밖에 없으므로 굳이 match안해도 가능
+        //   if (!e.target.matches('.todos > li > input[type=checkbox]'))
+        toggleTodo(e.target.checked, e.target.nextElementSibling);
       };
     </script>
   </body>
