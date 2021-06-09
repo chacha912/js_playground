@@ -20,7 +20,6 @@
     <ul class="todos"></ul>
     <script>
       const $inputTodo = document.querySelector('.input-todo');
-      const $add = document.querySelector('.add');
       const $todos = document.querySelector('.todos');
 
       // functions
@@ -56,9 +55,7 @@
       };
 
       $todos.onclick = e => {
-        // if (!e.target.classList.contains('remove')) return
         if (!e.target.matches('.todos > li > .remove')) return;
-
         removeTodo(e.target.parentNode);
       };
     </script>
