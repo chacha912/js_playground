@@ -33,6 +33,8 @@
         const content = $inputTodo.value.trim();
         if (!content) return;
         addTodo(content);
+
+        $inputTodo.value = '';
       };
     </script>
   </body>
