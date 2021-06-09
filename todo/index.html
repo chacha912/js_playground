@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todos V0</title>
+    <style>
+      .todos > li > input[type='checkbox']:checked + span {
+        text-decoration: line-through;
+      }
+    </style>
   </head>
   <body>
     <h1>TODO</h1>
@@ -55,12 +60,6 @@
         if (!e.target.matches('.todos > li > .remove')) return;
 
         removeTodo(e.target.parentNode);
-      };
-
-      $todos.onchange = e => {
-        //   todos 안에서 onchange 이벤트를 발생시키는 것이 input checkbox 밖에 없으므로 굳이 match안해도 가능
-        //   if (!e.target.matches('.todos > li > input[type=checkbox]'))
-        toggleTodo(e.target.checked, e.target.nextElementSibling);
       };
     </script>
   </body>
