@@ -14,11 +14,13 @@
   <body>
     <h1>TODO APP</h1>
     <form class="todo-form">
-      <input type="text" class="todo-input" placeholder="" />
+      <input type="text" class="todo-input" placeholder="enter to-do" />
       <button type="submit">add</button>
     </form>
     <ul class="todo-container"></ul>
     <script>
+      const $todoForm = document.querySelector('.todo-form');
+      const $todoInput = document.querySelector('.todo-input');
       const $todoContainer = document.querySelector('.todo-container');
 
       let todos = [];
@@ -27,10 +29,10 @@
         $todoContainer.innerHTML = todos
           .map(
             ({ id, content, completed }) => `
-            <li id=${id}>
-              <input type="checkbox" ${completed ? 'checked' : ''}>
-              <span>${content}</span>
-              <button class="remove">X</button>
+            <li id="${id}">
+              <input type="checkbox" ${completed ? 'checked' : ''} class="todo-check" />
+              <span class="todo-txt">${content}</span>
+              <button class="todo-remove">X</button>
               </li>`
           )
           .join('');
@@ -40,13 +42,32 @@
         todos = [
           { id: 1, content: 'HTML', completed: false },
           { id: 2, content: 'CSS', completed: true },
-          { id: 3, content: 'Javascript', completed: false }
+          { id: 3, content: 'Javascript', completed: false },
+          { id: 4, content: 'React', completed: false },
+          { id: 5, content: 'Typescript', completed: false }
         ].sort((todo1, todo2) => todo2.id - todo1.id);
 
         render();
       };
 
+      const addTodo = content => {
+        todos = [{ id: generateNextId(), content, completed: false }, ...todos];
+        render();
+      };
+
+      const generateNextId = () => Math.max(...todos.map(todo => todo.id), 0) + 1;
+
       window.addEventListener('DOMContentLoaded', fetchTodos);
+
+      $todoForm.addEventListener('submit', e => {
+        e.preventDefault();
+
+        const content = $todoInput.value.trim();
+        if (!content) return;
+        addTodo(content);
+
+        $todoInput.value = '';
+      });
     </script>
   </body>
 </html>
