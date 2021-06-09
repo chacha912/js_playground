@@ -22,18 +22,11 @@
       const addTodo = content => {
         const $li = document.createElement('li');
 
-        const $checkbox = document.createElement('input');
-        $checkbox.setAttribute('type', 'checkbox');
-        $li.appendChild($checkbox);
-
-        const $span = document.createElement('span');
-        $span.textContent = content;
-        $li.appendChild($span);
-
-        const $button = document.createElement('button');
-        $button.classList.add('remove');
-        $button.textContent = 'X';
-        $li.appendChild($button);
+        // content에 대해 sanitization 필요
+        $li.innerHTML = `
+            <input type="checkbox">
+            <span>${content}</span>
+            <button class="remove">X</button>`;
 
         $todos.appendChild($li);
       };
