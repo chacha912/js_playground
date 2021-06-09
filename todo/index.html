@@ -28,6 +28,10 @@
             <span>${content}</span>
             <button class="remove">X</button>`;
 
+        $li.querySelector('.remove').onclick = () => {
+          $todos.removeChild($li);
+        };
+
         $todos.insertBefore($li, $todos.firstElementChild);
       };
 
@@ -41,6 +45,8 @@
 
         $inputTodo.value = '';
       };
+
+      console.log(document.querySelector('.remove'));
     </script>
   </body>
 </html>
