@@ -29,7 +29,10 @@
       // event handlers
       $inputTodo.onkeyup = e => {
         if (e.key !== 'Enter') return;
-        addTodo($inputTodo.value);
+
+        const content = $inputTodo.value.trim();
+        if (!content) return;
+        addTodo(content);
       };
     </script>
   </body>
