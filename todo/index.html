@@ -13,6 +13,7 @@
     <ul class="todos"></ul>
     <script>
       const $inputTodo = document.querySelector('.input-todo');
+      const $add = document.querySelector('.add');
       const $todos = document.querySelector('.todos');
 
       // functions
@@ -30,6 +31,14 @@
       $inputTodo.onkeyup = e => {
         if (e.key !== 'Enter') return;
 
+        const content = $inputTodo.value.trim();
+        if (!content) return;
+        addTodo(content);
+
+        $inputTodo.value = '';
+      };
+
+      $add.onclick = e => {
         const content = $inputTodo.value.trim();
         if (!content) return;
         addTodo(content);
