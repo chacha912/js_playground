@@ -28,11 +28,11 @@
             <span>${content}</span>
             <button class="remove">X</button>`;
 
-        $li.querySelector('.remove').onclick = () => {
-          $todos.removeChild($li);
-        };
-
         $todos.insertBefore($li, $todos.firstElementChild);
+      };
+
+      const removeTodo = $target => {
+        $todos.removeChild($target);
       };
 
       // event handlers
@@ -46,7 +46,12 @@
         $inputTodo.value = '';
       };
 
-      console.log(document.querySelector('.remove'));
+      $todos.onclick = e => {
+        // if (!e.target.classList.contains('remove')) return
+        if (!e.target.matches('.todos > li > .remove')) return;
+
+        removeTodo(e.target.parentNode);
+      };
     </script>
   </body>
 </html>
