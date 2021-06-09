@@ -12,9 +12,24 @@
     <button class="add">add</button>
     <ul class="todos"></ul>
     <script>
-      document.querySelector('.input-todo').onkeyup = e => {
+      const $inputTodo = document.querySelector('.input-todo');
+      const $todos = document.querySelector('.todos');
+
+      // functions
+      const addTodo = content => {
+        $todos.innerHTML += `
+            <li>
+                <input type="checkbox">
+                <span>${content}</span>
+                <button class="remove">X</button>
+            </li>
+            `;
+      };
+
+      // event handlers
+      $inputTodo.onkeyup = e => {
         if (e.key !== 'Enter') return;
-        console.log(e.target.value);
+        addTodo($inputTodo.value);
       };
     </script>
   </body>
