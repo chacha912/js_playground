@@ -28,7 +28,7 @@
             <span>${content}</span>
             <button class="remove">X</button>`;
 
-        $todos.appendChild($li);
+        $todos.insertBefore($li, $todos.firstElementChild);
       };
 
       // event handlers
